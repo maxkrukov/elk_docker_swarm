@@ -2,4 +2,4 @@
 - cd elk_docker_swarm
 - docker network create -d overlay elk
 - docker stack deploy -c compose_elk.yml elasticsearch
-
+- iptables -A DOCKER-ISOLATION -i <public_interface> -j DROP
