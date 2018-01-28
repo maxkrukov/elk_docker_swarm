@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 
 services:
 
@@ -34,13 +34,22 @@ services:
     image: docker.elastic.co/kibana/kibana-oss:6.1.0
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
-    ports:
-      - "5601:5601"
     networks:
       - elk
     depends_on:
       - elasticsearch
 
+  nginx-proxy:
+    image: nginx-proxy:1.0
+    volumes:
+      - ./nginx-proxy/nginx/conf.d/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+      - ./nginx-proxy/nginx/htpasswd:/etc/nginx/htpasswd:ro
+    ports:
+      - "443:443"
+    networks:
+      - elk
+    depends_on:
+      - kibana
 
 networks:
   elk:
