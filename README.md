@@ -1,3 +1,5 @@
+# Elasticsearch+logstash+kibana standalone
+- docker swarm init --advertise-addr 127.0.0.1
 - git clone https://github.com/maxkrukov/elk_docker_swarm.git
 - cd elk_docker_swarm
 - docker network create -d overlay elk 
