@@ -6,5 +6,5 @@
 - docker build nginx-proxy/. -t nginx-proxy:1.0
 - htpasswd  nginx-proxy/nginx/htpasswd admin
 - docker stack deploy -c compose_elk.yml elasticsearch
-- iptables -A DOCKER-USER -i <public_interface> -p tcp -m multiport --dports 9200,9300,5000 -j DROP
+- iptables -I DOCKER-USER -i <public_interface> -p tcp -m multiport --dports 9200,9300,5000 -j DROP
 - Go to   https://<your_ip>
